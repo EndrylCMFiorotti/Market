@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Market.WebUI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/navbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/component-custom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Market.WebUI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @RenderSection("Style", required: false)
+</head>
+<body>
+    <div class="navbar">
+        <i class="fa fa-fw fa-bars fa-2x" id="menu" title="Menu"></i>
+        <i class="fa fa-fw fa-user-circle fa-2x" title="Settings"></i>
+    </div>
+    <div class="container">
+        <div class="sidebar close">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-fw fa-home fa-1x" title="Página Inicial"></i> Inicial</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Privacy", "Home")"><i class="fa fa-fw fa-handshake-o fa-1x" title="Página de Privacidade"></i> Privacidade</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("", "Home")"><i class="fa fa-fw fa-shopping-cart fa-1x" title="Página do Carrinho"></i> Carrinho</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("UserSettings", "Home")"><i class="fa fa-fw fa-user-circle fa-1x" title="Página das Informações do Usuário"></i>Informações do Usuário</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content expanded">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)

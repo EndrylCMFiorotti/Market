@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "User settings";
+}
+
+@section Style {
+    <link rel="stylesheet" href="~/css/user-settings.css" asp-append-version="true" />
+}
+
+<div class="text-center">
+    <div class="header">
+        @Html.CheckBox("toggle", new { id = "ToggleButton" })
+    </div>
+    <div></div>
+</div>
+
+@section Scripts {
+    <script src="~/js/user-settings.js" asp-append-version="true"></script>
+}
