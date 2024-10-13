@@ -1,0 +1,31 @@
+﻿.dropdown-modal {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--background-color-modal);
+    color: var(--text-color);
+    border: 1px solid black;
+    border-radius: 10px 0px 10px 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-modal header {
+
+}
+
+dropdown-modal body {
+
+}
+
+.dropdown-modal footer {
+
+}

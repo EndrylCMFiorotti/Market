@@ -1,10 +1,11 @@
 html {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 :root {
     --background-color-sidebar: black;
     --background-color-navbar: #303030;
+    --background-color-modal: white;
     --background-color: white;
     --text-color: black;
     --icon-color: white;
@@ -13,6 +14,7 @@ html {
 body.light-mode {
     --background-color-sidebar: black;
     --background-color-navbar: #303030;
+    --background-color-modal: white;
     --background-color: white;
     --text-color: black;
     --icon-color: white;
@@ -21,7 +23,8 @@ body.light-mode {
 body.dark-mode {
     --background-color-sidebar: black;
     --background-color-navbar: #303030;
-    --background-color: gray;
+    --background-color-modal: #303030;
+    --background-color: #4F4C4C;
     --text-color: white;
     --icon-color: white;
 }
@@ -56,10 +59,12 @@ body {
 
 .content {
     overflow-x: auto;
+    overflow: hidden;
 }
 
 .sidebar {
     height: 100%;
+    overflow: hidden;
     background-color: var(--background-color-sidebar);
 }
 
@@ -69,10 +74,9 @@ body {
     }
 
         .sidebar ul li {
-            text-decoration: none;
-            list-style-type: none;
             margin: 8px 0;
             white-space: nowrap;
+            list-style-type: none;
         }
 
             .sidebar ul li a {
@@ -82,36 +86,31 @@ body {
             }
 
 .content.expanded {
-    width: 100vw;
+    width: 100%;
     transition: width 1s;
 }
 
 .content.minimized {
-    width: 80vw;
+    width: 85%;
     transition: width 1s;
 }
 
 .sidebar.open {
-    width: 20vw;
+    width: 15%;
     transition: width 1s;
 }
 
 .sidebar.close {
-    width: 0vw;
+    width: 0%;
     transition: width 1s;
-    z-index: -1;
 }
 
 @media (max-width: 500px) {
-    html {
-        font-size: 16px;
-    }
-
     .content.minimized {
-        width: 0vw;
+        width: 0%;
     }
 
     .sidebar.open {
-        width: 100vw;
+        width: 100%;
     }
 }

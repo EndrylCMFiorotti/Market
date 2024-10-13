@@ -1,13 +1,11 @@
-﻿$(document).on("ready", function () {
-    const body = document.body;
+﻿const body = document.body;
 
-    $('#ToggleButton').on('click', () => {
-        body.classList.toggle('dark-mode');
-        body.classList.toggle('light-mode');
-    });
+$('#ToggleButton').on('click', () => {
+    body.classList.toggle('dark-mode');
+    body.classList.toggle('light-mode');
 });
 
-$('#menu').on('click', function () {
+$('#Menu').on('click', function () {
     var isSidebarOpen = $('.sidebar').hasClass('open');
     if (isSidebarOpen) {
         $('.sidebar').removeClass('open').addClass('close');

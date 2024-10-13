@@ -4,11 +4,12 @@ input[type="checkbox"] {
     padding: 16px 32px;
     margin: 8px;
     border-radius: 16px;
-    background: radial-gradient(circle 12px, white 100%, transparent calc(100% + 1px)) #ccc -16px;
+    border: 1px solid black;
+    background: radial-gradient(circle 12px, yellow 100%, transparent calc(100% + 1px)) lightblue -16px;
     transition: 0.3s ease-in-out;
 }
 
     input[type="checkbox"]:checked {
-        background-color: forestgreen;
+        background: radial-gradient(circle 12px, white 100%, transparent calc(100% + 1px)) darkblue -16px;
         background-position: 16px;
     }
