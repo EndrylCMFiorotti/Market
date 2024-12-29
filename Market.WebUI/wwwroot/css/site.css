@@ -58,14 +58,14 @@ body {
 }
 
 .content {
-    overflow-x: auto;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .sidebar {
     height: 100%;
     overflow: hidden;
     background-color: var(--background-color-sidebar);
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.7);
 }
 
     .sidebar ul {
@@ -105,7 +105,21 @@ body {
     transition: width 1s;
 }
 
-@media (max-width: 500px) {
+.modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+    .modal .modal-content {
+        background: var(--background-color-modal);
+    }
+
+#modalLogin .modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@media (max-width: 600px) {
     .content.minimized {
         width: 0%;
     }

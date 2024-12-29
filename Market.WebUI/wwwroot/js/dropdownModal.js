@@ -1,5 +1,3 @@
-$('#DropdownModalSettings').hide();
-
 $('#Settings').on('click', function () {
     const button = $(this);
     const modal = $('#DropdownModalSettings');

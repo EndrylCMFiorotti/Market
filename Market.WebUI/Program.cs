@@ -1,10 +1,19 @@
 using Market.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddRazorPages();
 
 ConfigurationDI.ConfigureServices(builder.Services);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options => {
+        options.LoginPath = "/Base/Login";
+        options.LogoutPath = "/Base/Logout";
+    });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -20,6 +29,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

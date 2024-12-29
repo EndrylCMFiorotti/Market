@@ -1,0 +1,25 @@
+﻿<div class="modal" id="modalLogin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/Base/Login" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <label for="email" class="input-group-text">Email</label>
+                        @Html.TextBox("email", null, new { @type = "email", @class = "form-control", placeholder = "Digite seu email", id = "email", required = "required" })
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="password" class="input-group-text">Senha</label>
+                        @Html.TextBox("password", null, new { @type = "password", @class = "form-control", placeholder = "Digite sua senha", id = "password", required = "required" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" onclick="closeModal('modalLogin')" class="btn btn-danger">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

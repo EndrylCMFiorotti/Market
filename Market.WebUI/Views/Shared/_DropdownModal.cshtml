@@ -1,0 +1,19 @@
+﻿@using System.Security.Claims
+<div class="dropdown-modal" id="DropdownModalSettings" style="display: none">
+    <div class="header">
+        <p>@ViewBag.Name</p>
+    </div>
+    <div class="body">
+        <label for="ToggleButton">Dark Mode</label>
+        @Html.CheckBox("toggle", new { id = "ToggleButton" })
+    </div>
+    <div class="footer">
+        @if (User.Identity != null && User.Identity.IsAuthenticated) {
+            <button type="button" id="cmdLogout" class="btn btn-success">Logout</button>
+            <button type="button" id="CloseDropdownModalSettingsButton" class="btn btn-danger">Fechar</button>
+        } else {
+            <button type="button" onclick="openModal('modalLogin')" class="btn btn-success">Login</button>
+            <button type="button" id="CloseDropdownModalSettingsButton" class="btn btn-danger">Fechar</button>
+        }
+    </div>
+</div>

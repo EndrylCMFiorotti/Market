@@ -1,15 +1,17 @@
+using Market.Data.Business;
+using Market.Data.Entity;
+using Market.Data.Models;
 using Market.WebUI.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Market.WebUI.Controllers {
-    public class HomeController : Controller {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger) {
-            _logger = logger;
-        }
-
+    public class HomeController(ILogger<HomeController> logger, BLLogin blLogin) : BaseController(logger, blLogin) {
         public IActionResult Index() {
             return View();
         }

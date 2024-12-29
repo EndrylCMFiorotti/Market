@@ -3,14 +3,8 @@ using Market.Data.Entity;
 using Market.Data.Interfaces;
 using Market.Utils.Exceptions;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Market.Data.Repository {
     public class LoginRespository : ILoginRepository {
@@ -22,38 +16,38 @@ namespace Market.Data.Repository {
             _connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public async Task<User> LogIn(User user) {
+        public async Task<User?> LogIn(string email, string password) {
             using (_connection) {
                 _connection.Open();
                 using (var transaction = await _connection.BeginTransactionAsync()) {
                     try {
-                        User userQuery = await GetUserAsync(user, _connection, transaction);
+                        User userQuery = await GetUserAsync(email, password, _connection, transaction);
                         await LogInUser(userQuery.IdUser, _connection, transaction);
                         await transaction.CommitAsync();
                         return userQuery;
-                    } catch (Exception ex) {
+                    } catch (Exception) {
                         await transaction.RollbackAsync();
-                        throw new HttpResponseException(ex.Message);
+                        return null;
                     }
                 }
             }
         }
 
-        private async Task<User> GetUserAsync(User user, DbConnection connection, DbTransaction transaction) {
+        private async Task<User> GetUserAsync(string email, string password, DbConnection connection, DbTransaction transaction) {
             string query = "SELECT u.IdUser, u.Name, u.Email, u.IsLogged FROM [User] u WHERE Email = @Email AND Password = @Password";
-            return await connection.QueryFirstAsync<User>(query, user, transaction);
+            return await connection.QueryFirstAsync<User>(query, new { Email = email, Password = password }, transaction);
         }
 
         private async Task LogInUser(int idUser, DbConnection connection, DbTransaction transaction) {
-            string update = "UPDATE User SET IsLogged = 1 WHERE IdUser = @idUser";
-            await connection.ExecuteAsync(update, idUser, transaction);
+            string update = "UPDATE [User] SET IsLogged = 1 WHERE IdUser = @IdUser";
+            await connection.ExecuteAsync(update, new { IdUser = idUser }, transaction);
         }
 
-        public async Task LogOut(User user) {
+        public async Task LogOut(int idUser) {
             using (_connection) {
                 _connection.Open();
-                string update = "UPDATE User SET IsLogged = 0 WHERE IdUser = @idUser";
-                await _connection.ExecuteAsync(update, user);
+                string update = "UPDATE [User] SET IsLogged = 0 WHERE IdUser = @idUser";
+                await _connection.ExecuteAsync(update, new { idUser });
             }
         }
     }
