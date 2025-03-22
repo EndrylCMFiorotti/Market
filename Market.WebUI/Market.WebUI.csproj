@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Market.DependencyInjection\Market.DependencyInjection.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\home\" />
+  </ItemGroup>
+
 </Project>

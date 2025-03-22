@@ -13,15 +13,10 @@ using System.Security.Claims;
 
 namespace Market.WebUI.Controllers {
     public class HomeController(ILogger<HomeController> logger, BLLogin blLogin, BLProduct blProduct) : BaseController(logger, blLogin) {
-        private readonly BLProduct _blProduct = blProduct;
 
         [HttpGet]
-        public async Task<IActionResult> Index() {
-            HomeViewModel model = new() {
-                ProductList = await _blProduct.GetAllProducts()
-            };
-
-            return View(model);
+        public IActionResult Index() {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

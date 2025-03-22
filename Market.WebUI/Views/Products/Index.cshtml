@@ -1,0 +1,24 @@
+﻿@model Market.Data.Models.Home.HomeViewModel
+@{
+    ViewData["Title"] = "Produts Page";
+}
+
+@section Style {
+    <link rel="stylesheet" href="~/css/home/index.css" />
+}
+
+<div class="card-container">
+    @foreach (var product in Model.ProductList) {
+        <div class="card">
+            <img src="@product.ImageLink" class="card-img-top" alt="@product.NameProduct">
+            <div class="card-body">
+                <h5 class="card-title">@product.NameProduct</h5>
+                <abbr title="@product.DescriptionProduct" class="card-text">@product.DescriptionProduct</abbr>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @* Colocar aqui Scripts que pertencem apenas essa tela *@
+}

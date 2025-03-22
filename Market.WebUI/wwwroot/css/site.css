@@ -105,6 +105,10 @@ body {
                 cursor: pointer;
             }
 
+            .sidebar ul li a:hover {
+                color: gray;
+            }
+
 .content.expanded {
     width: 100%;
     transition: width .5s;
