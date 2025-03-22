@@ -5,6 +5,9 @@ $(window).on('load', function () {
     $('#ToggleButton').prop('checked', isDarkMode);
     $('body').toggleClass('dark-mode', isDarkMode);
     $('body').toggleClass('light-mode', !isDarkMode);
+
+    var isSidebarOpen = localStorage.getItem("IsSidebarOpen") === 'true';
+    verifyOpenMenu(isSidebarOpen);
 })
 
 $('#ToggleButton').on('change', function () {
@@ -15,6 +18,11 @@ $('#ToggleButton').on('change', function () {
 
 $('#Menu').on('click', function () {
     var isSidebarOpen = $('.sidebar').hasClass('open');
+    localStorage.setItem("IsSidebarOpen", isSidebarOpen);
+    verifyOpenMenu(isSidebarOpen);
+});
+
+function verifyOpenMenu(isSidebarOpen) {
     if (isSidebarOpen) {
         $('.sidebar').removeClass('open').addClass('close');
         $('.content').removeClass('minimized').addClass('expanded');
@@ -22,7 +30,7 @@ $('#Menu').on('click', function () {
         $('.sidebar').removeClass('close').addClass('open');
         $('.content').removeClass('expanded').addClass('minimized');
     }
-});
+}
 
 function openToast(message, isSuccess) {
     closeModal('modalLogin');
